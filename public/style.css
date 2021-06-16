@@ -1,0 +1,15 @@
+#logo {
+  background-color: bisque;
+  height: 10em;
+}
+
+#navbar {
+  background-color: burlywood;
+  display: flex;
+  justify-content: stretch;
+  height: 3em;
+}
+
+#navbar * {
+  margin: auto;
+}
