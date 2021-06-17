@@ -3,7 +3,11 @@ const db = require('./database');
 
 const Cart = db.define('cart', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   quantity: {
     type: Sequelize.INTEGER
