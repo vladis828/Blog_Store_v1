@@ -22,7 +22,7 @@ app.get('*', (req, res) => {
 })
 
 /**Listen for port and send the message to the console */
-db.authenticate()
+db.sync()
   .then(() => {
     console.log('Database connected!');
     app.listen(port, console.log(`Server started on port http://localhost:${port}`))

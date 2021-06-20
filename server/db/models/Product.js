@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('./database');
+const db = require('../database');
 
 const Product = db.define('product', {
   name: {
@@ -9,18 +9,12 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-  pictures: {
-    type: Sequelize.STRING
-  },
-  recipe: {
-    type: Sequelize.STRING,
+  price: {
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true
     }
-  },
-  price: {
-    type: Sequelize.INTEGER
   },
   type: {
     type: Sequelize.STRING,
@@ -29,6 +23,13 @@ const Product = db.define('product', {
     }
   },
   description: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  recipe: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
