@@ -7,9 +7,9 @@ import axios from 'axios';
 function Home() {
   const [prods, setProds] = useState([]);
 
-  useEffect(async () => {
-    const res = await axios.get('/api/products');
-    setProds(res.data)
+  useEffect(() => {
+    axios.get('/api/products')
+      .then(res => setProds(res.data))
   }, [])
 
   return (
@@ -17,7 +17,7 @@ function Home() {
       <Navbar />
       <div>
         {prods.map(
-          prod => <Dish prod={prod} pics={prod.pics} />
+          prod => <Dish key={prod.id} prod={prod} pics={prod.pics} />
         )}
       </div>
     </div>
