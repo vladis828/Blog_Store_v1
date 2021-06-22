@@ -13,3 +13,20 @@
 #navbar * {
   margin: auto;
 }
+
+#content {
+  border: 5px solid grey;
+  border-radius: 20px;
+  margin: 1%;
+}
+
+#content * {
+  margin: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 30%;
+}
