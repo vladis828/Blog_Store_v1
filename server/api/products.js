@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Product, Pic } = require('../db/models');
-
+const auth = require('../../middleware/auth')
 
 router.get('/', (req, res) => {
   Product.findAll({
