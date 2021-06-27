@@ -11,6 +11,10 @@ const port = process.env.PORT || 5000;
 /**Middleware for logging requests and responses */
 app.use(volleyball)
 
+//Body-parser middleware
+app.use(express.json())
+
+
 /**After getting index.html send all related styling and image files*/
 app.use(express.static(path.join(__dirname, '../public')))
 
