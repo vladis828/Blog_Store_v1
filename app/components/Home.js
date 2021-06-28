@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Dish from './Dish';
 import axios from 'axios';

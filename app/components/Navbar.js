@@ -13,7 +13,7 @@ function Navbar() {
         <Link to='/about'>About Me</Link>
         <Dropdown />
         <Link to='/contacts'>Contacts</Link>
-        <Link to=''>Log in</Link>
+        <Link to='/login'>Log in</Link>
       </div>
     </div>
   )

@@ -3,7 +3,6 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
 function Slideshow(props) {
-  console.dir(props.pics)
   return (
     <div>
       <Slide easing="ease">

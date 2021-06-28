@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Slideshow from './Slideshow';
 
 function Dish(props) {
-  console.dir(props)
   const [isVisible, setVisible] = useState(false)
+  const token = localStorage.getItem('token')
 
   function buttonSwitch(id) {
     if (document.getElementById(id).textContent === 'See More') {
@@ -22,14 +22,18 @@ function Dish(props) {
       {isVisible ? (
         <div>
           <h2>{props.prod.price}$</h2>
-          <form>
+          {token ? <form>
             <label>
               Quantity
             </label>
             <input id={`quantity` + props.prod.id} type="number" min={0} max={100} defaultValue={1} />
-          </form>
+          </form> : null}
+
           <p>{props.prod.recipe}</p>
-          <button onClick={() => alert(`Product id => ${props.prod.id}, Quantity => ${document.getElementById(`quantity${props.prod.id}`).value}`)}>Add to cart</button>
+          {token ?
+            <button onClick={() => alert(`Product id => ${props.prod.id}, Quantity => ${document.getElementById(`quantity${props.prod.id}`).value}`)}>Add to cart</button>
+            : null}
+
         </div>
       ) : null}
 

@@ -75,7 +75,6 @@ router.post('/signup', async (req, res) => {
 //Auth
 router.post('/auth', async (req, res) => {
   const { email, password } = req.body;
-
   //Simple validation
   if (!email || !password) {
     return res.status(400).send('Please enter all fields')
@@ -94,12 +93,14 @@ router.post('/auth', async (req, res) => {
     bcrypt.compare(password, user.password)
       .then(isMatch => {
         if (!isMatch) return res.status(400).send('Invalid credentials')
+
         jwt.sign(
           { id: user.id },
           config.get("jwt"),
           { expiresIn: 3600 },
           (err, token) => {
             if (err) throw err;
+
             res.json({
               token,
               user: {
@@ -107,6 +108,7 @@ router.post('/auth', async (req, res) => {
                 email: user.email
               }
             })
+
           }
         )
       })
