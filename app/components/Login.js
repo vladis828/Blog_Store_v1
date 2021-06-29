@@ -1,42 +1,53 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function Login() {
+  // console.log("LOGIN")
+  const [isToken, setIsToken] = useState(localStorage.getItem('token'))
 
   async function handleSubmit(event) {
     let email = event.target.email.value;
     let password = event.target.password.value;
     event.preventDefault();
-    await axios.post('/api/users/auth', { email, password })
-      .then((res) => {
-        localStorage.setItem('token', res.data.token)
-      })
+    const res = await axios.post('/api/users/auth', { email, password })
+
+    const token = res.data.token;
+    localStorage.setItem('token', token)
+    setIsToken(token)
   }
 
   return (
     <div>
-      <Navbar />
-      <div id='login'>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              <h4>Email</h4>
-            </label>
-            <input name="email" type="email" />
+      {isToken ?
+        <Redirect to='/' />
+        :
+        <div>
+          <Navbar />
+          <div id='login'>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>
+                  <h4>Email</h4>
+                </label>
+                <input name="email" type="email" />
+              </div>
+              <div>
+                <label>
+                  <h4>Password</h4>
+                </label>
+                <input name="password" type="password" />
+              </div>
+              <div><br />
+                <button type="submit">Login</button>
+              </div>
+            </form>
           </div>
-          <div>
-            <label>
-              <h4>Password</h4>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <div><br />
-            <button type="submit">Login</button>
-          </div>
-        </form>
-      </div>
+        </div >
+      }
     </div >
+
   )
 }
 

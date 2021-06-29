@@ -1,8 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import Dropdown from './Dropdown'
 
 function Navbar() {
+  // console.log("NAVBAR")
+  const [token, setToken] = useState(localStorage.getItem('token'))
+
+  function logOut() {
+    localStorage.removeItem('token')
+    setToken(null)
+  }
+
   return (
     <div>
       <div id='logo'>
@@ -13,7 +21,13 @@ function Navbar() {
         <Link to='/about'>About Me</Link>
         <Dropdown />
         <Link to='/contacts'>Contacts</Link>
-        <Link to='/login'>Log in</Link>
+
+        {token ?
+          <div>
+            <Link to='/cart'>Cart</Link><br />
+            <Link onClick={logOut}>Log out</Link>
+          </div>
+          : <Link to='/login'>Log in</Link>}
       </div>
     </div>
   )

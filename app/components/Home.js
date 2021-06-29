@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 function Home() {
+  // console.log("HOME")
   const [prods, setProds] = useState([]);
 
   useEffect(() => {

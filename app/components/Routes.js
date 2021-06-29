@@ -9,6 +9,7 @@ import Contacts from './Contacts'
 
 
 function Routes() {
+  // console.log("ROUTES")
   return (
     <Switch>
       <Route exact path='/' component={Home} />
