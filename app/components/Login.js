@@ -25,7 +25,7 @@ function Login() {
         :
         <div>
           <Navbar />
-          <div id='login'>
+          <div id='content'>
             <form onSubmit={handleSubmit}>
               <div>
                 <label>

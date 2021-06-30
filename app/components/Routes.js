@@ -6,6 +6,7 @@ import Cart from './Cart'
 import AdminPage from './AdminPage'
 import AboutPage from './AboutPage'
 import Contacts from './Contacts'
+import Account from './Account'
 
 
 function Routes() {
@@ -18,6 +19,7 @@ function Routes() {
       <Route exact path='/admin' component={AdminPage} />
       <Route exact path='/about' component={AboutPage} />
       <Route exact path='/contacts' component={Contacts} />
+      <Route exact path='/account' component={Account} />
     </Switch>
   )
 }

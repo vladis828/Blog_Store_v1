@@ -1,3 +1,4 @@
+const { SequelizeScopeError } = require('sequelize');
 const Sequelize = require('sequelize');
 const db = require('../database');
 
@@ -10,6 +11,12 @@ const Bag = db.define('bags', {
     }
   },
   productId: {
+    type: Sequelize.INTEGER
+  },
+  productName: {
+    type: Sequelize.STRING
+  },
+  productPrice: {
     type: Sequelize.INTEGER
   },
   quantity: {
