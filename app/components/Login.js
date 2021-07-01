@@ -14,7 +14,10 @@ function Login() {
     const res = await axios.post('/api/users/auth', { email, password })
 
     const token = res.data.token;
+    const userId = res.data.user.id
+    console.log(res.data)
     localStorage.setItem('token', token)
+    localStorage.setItem('userId', userId)
     setIsToken(token)
   }
 

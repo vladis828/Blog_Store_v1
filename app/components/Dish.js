@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Slideshow from './Slideshow';
+import axios from 'axios';
 
 function Dish(props) {
   const [isVisible, setVisible] = useState(false)
@@ -11,6 +12,20 @@ function Dish(props) {
     } else if (document.getElementById(id).textContent === 'See Less') {
       document.getElementById(id).textContent = 'See More'
     }
+  }
+
+  async function addToCart() {
+    const body = {
+      userId: localStorage.getItem('userId'),
+      productId: props.prod.id,
+      productName: props.prod.name,
+      productPrice: props.prod.price,
+      quantity: `${document.getElementById(`quantity${props.prod.id}`).value}`
+    }
+
+    await axios.post('/api/bags', body,
+      { headers: { Authorization: localStorage.getItem('token') } }
+    )
   }
 
   return (
@@ -31,7 +46,7 @@ function Dish(props) {
 
           <p>{props.prod.recipe}</p>
           {token ?
-            <button onClick={() => alert(`Product id => ${props.prod.id}, Quantity => ${document.getElementById(`quantity${props.prod.id}`).value}`)}>Add to cart</button>
+            <button onClick={addToCart}>Add to cart</button>
             : null}
 
         </div>

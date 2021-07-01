@@ -8,6 +8,7 @@ function Navbar() {
 
   function logOut() {
     localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     setToken(null)
   }
 
