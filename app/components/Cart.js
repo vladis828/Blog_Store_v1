@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function Cart() {
   // console.log("CART")
+
   const [bags, setBags] = useState([])
   const token = localStorage.getItem('token')
 
@@ -34,23 +35,74 @@ function Cart() {
       .then(res => setBags(bags.filter(bag => bag.id !== res.data)))
   }
 
+  function placeOrder(ids) {
+    axios.put('/api/bags/place', { ids })
+      .then(res => {
+        setBags(bags.map(bag => {
+          if (res.data.includes(bag.id)) {
+            return {
+              ...bag,
+              paid: true
+            }
+          } else {
+            return bag
+          }
+        }))
+      })
+
+    alert('Order was successfully placed!')
+  }
+
   return (
     <div>
       {token ?
         <div>
           <Navbar />
-          <div>
-            {bags.length ? bags.map(bag =>
-              <div id='content'>
-                <p>Name: {bag.productName}</p>
-                <p>Price: {bag.productPrice}</p>
-                <p>Quantity: {bag.quantity}</p>
-                <button onClick={() => quantity(bag.id, 'plus')}>+</button>
-                <button onClick={() => quantity(bag.id, 'minus')}>-</button>
-                <button onClick={() => deleteItem(bag.id)}>Delete</button>
-              </div>
+          <div id='singleBag'>
+            <h3>Your cart</h3>
+            {bags.some(bag => !bag.paid) ? bags.map(bag => {
+              if (!bag.paid) {
+                return (
+                  <div id='content'>
+                    <p>Name: {bag.productName}</p>
+                    <p>Price: {bag.productPrice}</p>
+                    <p>Quantity: {bag.quantity}</p>
+                    <button onClick={() => quantity(bag.id, 'plus')}>+</button>
+                    <button onClick={() => quantity(bag.id, 'minus')}>-</button>
+                    <button onClick={() => deleteItem(bag.id)}>Delete</button>
+                  </div>
+                )
+              }
+            }
+
             )
               : <p>Your cart is empty</p>}
+          </div>
+          {bags.some(bag => !bag.paid) ?
+            <div id='total'>
+              Total: {bags.filter(bag => !bag.paid).reduce((acc, curVal) => {
+                return (acc + curVal.productPrice * curVal.quantity)
+              }, 0)}$
+              <button onClick={() => placeOrder(bags.map(bag => bag.id))}>Place order</button>
+            </div>
+            : null}
+          <div id='history'>
+            <h3>Your purchase history</h3>
+            {bags.some(bag => bag.paid) ?
+              <div>
+                {bags.map(bag => {
+                  if (bag.paid) {
+                    return (
+                      <div id='content'>
+                        <p>Name: {bag.productName}</p>
+                        <p>Quantity: {bag.quantity}</p>
+                        <p>Date: {bag.updatedAt.slice(0, 10)}</p>
+                      </div>
+                    )
+                  }
+                })}
+              </div>
+              : <p>No purchase history yet</p>}
           </div>
         </div>
         :

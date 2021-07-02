@@ -65,7 +65,8 @@ router.post('/', auth, async (req, res) => {
 
   const bag = await Bag.findOne({
     where: {
-      productId
+      productId,
+      paid: false
     }
   })
 
@@ -99,5 +100,20 @@ router.delete('/delete', async (req, res) => {
 })
 
 
+//Place Order
+router.put('/place', (req, res) => {
+  req.body.ids.map(async (id) => {
+    await Bag.update({
+      paid: true
+    },
+      {
+        where: {
+          id: id
+        }
+      })
+  })
+
+  res.json(req.body.ids)
+})
 module.exports = router;
 
