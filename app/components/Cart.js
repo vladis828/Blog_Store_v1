@@ -13,8 +13,8 @@ function Cart() {
     setBags(res.data.bags)
   }, [])
 
-  function increment(id) {
-    axios.put('/api/bags/plus', { id })
+  function quantity(id, operation) {
+    axios.put(`/api/bags/${operation}`, { id })
       .then(res => {
         setBags(bags.map(bag => {
           if (bag.id === id) {
@@ -29,24 +29,9 @@ function Cart() {
       })
   }
 
-  function decrement(id) {
-    axios.put('/api/bags/minus', { id })
-      .then(res => {
-        setBags(bags.map(bag => {
-          if (bag.id === id) {
-            return {
-              ...bag,
-              quantity: res.data
-            };
-          } else {
-            return bag
-          }
-        }))
-      })
-  }
-
-  function deleteItem() {
-
+  function deleteItem(id) {
+    axios.delete('/api/bags/delete', { data: { id } })
+      .then(res => setBags(bags.filter(bag => bag.id !== res.data)))
   }
 
   return (
@@ -60,9 +45,9 @@ function Cart() {
                 <p>Name: {bag.productName}</p>
                 <p>Price: {bag.productPrice}</p>
                 <p>Quantity: {bag.quantity}</p>
-                <button onClick={() => increment(bag.id)}>+</button>
-                <button onClick={() => decrement(bag.id)}>-</button>
-                <button onClick={deleteItem}>Delete</button>
+                <button onClick={() => quantity(bag.id, 'plus')}>+</button>
+                <button onClick={() => quantity(bag.id, 'minus')}>-</button>
+                <button onClick={() => deleteItem(bag.id)}>Delete</button>
               </div>
             )
               : <p>Your cart is empty</p>}

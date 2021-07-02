@@ -35,7 +35,7 @@ router.put('/plus', async (req, res) => {
 }
 )
 
-//Increment quantity
+//Decrement quantity
 router.put('/minus', async (req, res) => {
 
   const bag = await Bag.findOne({
@@ -56,10 +56,9 @@ router.put('/minus', async (req, res) => {
     )
     res.json(bag.quantity - 1)
   }
-
-
 }
 )
+
 //Add Products to Bag
 router.post('/', auth, async (req, res) => {
   const { userId, productId, productName, productPrice, quantity } = req.body
@@ -89,6 +88,15 @@ router.post('/', auth, async (req, res) => {
 }
 )
 
+//Delete product from Bag
+router.delete('/delete', async (req, res) => {
+  await Bag.destroy({
+    where: {
+      id: req.body.id
+    }
+  })
+  res.json(req.body.id)
+})
 
 
 module.exports = router;
