@@ -1,21 +1,21 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 
-function Login() {
-  // console.log("LOGIN")
-  const [isToken, setIsToken] = useState(localStorage.getItem('token'))
+function SignUp() {
+  // console.log("SIGNUP")
+  const [isToken, setIsToken] = useState('')
 
   async function handleSubmit(event) {
     let email = event.target.email.value;
     let password = event.target.password.value;
     event.preventDefault();
-    const res = await axios.post('/api/users/auth', { email, password })
+    const res = await axios.post('/api/users/signup', { email, password })
 
     const token = res.data.token;
     const userId = res.data.user.id
-    // console.log(res.data)
+    console.log(res.data)
     localStorage.setItem('token', token)
     localStorage.setItem('userId', userId)
     setIsToken(token)
@@ -43,8 +43,7 @@ function Login() {
                 <input name="password" type="password" />
               </div>
               <div><br />
-                <button type="submit">Login</button>
-                <p>No account yet?  <Link to='/signup'>Sign Up! </Link></p>
+                <button type="submit">Sign Up</button>
               </div>
             </form>
           </div>
@@ -55,5 +54,5 @@ function Login() {
   )
 }
 
-export default Login;
+export default SignUp;
 

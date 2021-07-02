@@ -7,6 +7,7 @@ import AdminPage from './AdminPage'
 import AboutPage from './AboutPage'
 import Contacts from './Contacts'
 import Account from './Account'
+import SignUp from './SignUp'
 
 
 function Routes() {
@@ -15,6 +16,7 @@ function Routes() {
     <Switch>
       <Route exact path='/' component={Home} />
       <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={SignUp} />
       <Route exact path='/cart' component={Cart} />
       <Route exact path='/admin' component={AdminPage} />
       <Route exact path='/about' component={AboutPage} />
