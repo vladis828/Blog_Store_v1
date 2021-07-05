@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Dropdown from './Dropdown'
 
 function Navbar() {
   // console.log("NAVBAR")
   const [token, setToken] = useState(localStorage.getItem('token'))
 
   function logOut() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('userId')
-    setToken(null)
+    localStorage.clear();
+    setToken(null);
   }
+
 
   return (
     <div>
@@ -20,7 +19,6 @@ function Navbar() {
       <div id='navbar'>
         <Link to='/'>Home</Link>
         <Link to='/about'>About Me</Link>
-        <Dropdown />
         <Link to='/contacts'>Contacts</Link>
 
         {token ?

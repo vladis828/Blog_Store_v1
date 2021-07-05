@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slideshow from './Slideshow';
 import axios from 'axios';
 
 function Dish(props) {
   const [isVisible, setVisible] = useState(false)
-  const token = localStorage.getItem('token')
+  const [token, setToken] = useState(localStorage.getItem('token'))
+
+  useEffect(async () => {
+    const res = await axios.get('/api/user', { headers: { Authorization: localStorage.getItem('token') } })
+
+    if (res.data === 'Token is not valid') {
+      setToken(undefined);
+      localStorage.clear()
+    } else {
+      setVisible(true)
+    }
+
+  }, [])
 
   function buttonSwitch(id) {
     if (document.getElementById(id).textContent === 'See More') {
@@ -32,6 +44,7 @@ function Dish(props) {
     <div id='content'>
       <Slideshow pics={props.pics} />
       <h2>{props.prod.name}</h2>
+      <p>{props.prod.type}</p>
       <p>{props.prod.description}</p>
 
       {isVisible ? (

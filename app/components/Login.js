@@ -15,10 +15,9 @@ function Login() {
 
     const token = res.data.token;
     const userId = res.data.user.id
-    // console.log(res.data)
-    localStorage.setItem('token', token)
-    localStorage.setItem('userId', userId)
-    setIsToken(token)
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', userId);
+    setIsToken(token);
   }
 
   return (

@@ -7,11 +7,18 @@ function Cart() {
   // console.log("CART")
 
   const [bags, setBags] = useState([])
-  const token = localStorage.getItem('token')
+  const [token, setToken] = useState(localStorage.getItem('token'))
 
   useEffect(async () => {
     const res = await axios.get('/api/user', { headers: { Authorization: localStorage.getItem('token') } })
-    setBags(res.data.bags)
+
+    if (res.data === 'Token is not valid') {
+      setToken(undefined);
+      localStorage.clear()
+    } else {
+      setBags(res.data.bags)
+    }
+
   }, [])
 
   function quantity(id, operation) {

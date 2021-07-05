@@ -1,15 +1,23 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function Account() {
+  // console.log("ACCOUNT")
   const [user, setUser] = useState({})
-  const token = localStorage.getItem('token')
+  const [token, setToken] = useState(localStorage.getItem('token'))
 
   useEffect(async () => {
     const res = await axios.get('/api/user', { headers: { Authorization: localStorage.getItem('token') } })
-    setUser(res.data)
+
+    if (res.data === 'Token is not valid') {
+      setToken(undefined);
+      localStorage.clear()
+    } else {
+      setUser(res.data)
+    }
+
   }, [])
 
   return (

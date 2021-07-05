@@ -35,3 +35,14 @@
   height: 200px;
   width: 20%;
 }
+
+#dishFilter {
+  display: flex;
+  justify-content: stretch;
+  margin-top: 15px;
+}
+
+#dishFilter * {
+  margin: auto;
+  height: 3em;
+}
