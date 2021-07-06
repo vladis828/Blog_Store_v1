@@ -12,8 +12,6 @@ function Dish(props) {
     if (res.data === 'Token is not valid') {
       setToken(undefined);
       localStorage.clear()
-    } else {
-      setVisible(true)
     }
 
   }, [])
