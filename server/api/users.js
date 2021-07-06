@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
 
   //Simple validation
   if (!email || !password) {
-    return res.status(400).send('PLease enter all fields')
+    return res.send('Please enter all fields').status(400)
   }
 
   //Check for existing user
@@ -34,7 +34,7 @@ router.post('/signup', async (req, res) => {
   })
 
   if (user) {
-    res.status(400).send('The user with this email already exists')
+    res.send('The user with this email already exists').status(400)
   } else {
     const newUser = await User.create(
       {

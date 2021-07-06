@@ -13,12 +13,17 @@ function SignUp() {
     event.preventDefault();
     const res = await axios.post('/api/users/signup', { email, password })
 
-    const token = res.data.token;
-    const userId = res.data.user.id
-    // console.log(res.data)
-    localStorage.setItem('token', token)
-    localStorage.setItem('userId', userId)
-    setIsToken(token)
+    if (res.data === 'The user with this email already exists') {
+      alert('The user with this email already exists')
+    } else if (res.data === 'Please enter all fields') {
+      alert('Please enter all fields')
+    } else {
+      const token = res.data.token;
+      const userId = res.data.user.id
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', userId)
+      setIsToken(token)
+    }
   }
 
   return (
