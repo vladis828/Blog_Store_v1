@@ -1,18 +1,18 @@
 import React from 'react';
-import { Slide } from 'react-slideshow-image';
+import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
 function Slideshow(props) {
   return (
     <div>
-      <Slide easing="ease">
+      <Fade easing="ease">
         {props.pics.map(pic =>
-          <div className="each-slide">
+          <div className="each-slide" key={pic.id}>
             <div style={{ 'backgroundImage': `url(${pic.url})` }}>
             </div>
           </div>
         )}
-      </Slide>
+      </Fade>
     </div>
   )
 };

@@ -8,7 +8,6 @@ function Navbar() {
   function logOut() {
     localStorage.clear();
     setToken(null);
-    window.location.reload()
   }
 
 
@@ -26,7 +25,7 @@ function Navbar() {
           <div>
             <Link to='/account'>Account</Link><br />
             <Link to='/cart'>Cart</Link><br />
-            <Link onClick={logOut}>Log out</Link>
+            <Link to='/' onClick={logOut}>Log out</Link>
           </div>
           : <Link to='/login'>Log in</Link>}
       </div>

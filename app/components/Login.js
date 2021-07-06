@@ -20,7 +20,6 @@ function Login() {
     } else if (res.data === 'Please enter all fields') {
       alert('Please enter all fields')
     } else {
-      console.log("ELSE", res.data)
       const token = res.data.token;
       const userId = res.data.user.id
       localStorage.setItem('token', token);

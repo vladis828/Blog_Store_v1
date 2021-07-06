@@ -70,7 +70,7 @@ function Cart() {
             {bags.some(bag => !bag.paid) ? bags.map(bag => {
               if (!bag.paid) {
                 return (
-                  <div id='content'>
+                  <div id='content' key={bag.id}>
                     <p>Name: {bag.productName}</p>
                     <p>Price: {bag.productPrice}</p>
                     <p>Quantity: {bag.quantity}</p>
@@ -100,7 +100,7 @@ function Cart() {
                 {bags.map(bag => {
                   if (bag.paid) {
                     return (
-                      <div id='content'>
+                      <div id='content' key={bag.id}>
                         <p>Name: {bag.productName}</p>
                         <p>Quantity: {bag.quantity}</p>
                         <p>Date: {bag.updatedAt.slice(0, 10)}</p>
