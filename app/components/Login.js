@@ -17,6 +17,8 @@ function Login() {
       alert('The user does not exist')
     } else if (res.data === 'Invalid credentials') {
       alert('Invalid credentials')
+    } else if (res.data === 'Please enter all fields') {
+      alert('Please enter all fields')
     } else {
       console.log("ELSE", res.data)
       const token = res.data.token;
