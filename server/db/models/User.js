@@ -1,12 +1,12 @@
-const { SequelizeScopeError } = require('sequelize');
 const Sequelize = require('sequelize');
 const db = require('../database');
 
 const User = db.define('user', {
-  // id: {
-  //   type: Sequelize.UUID,
-  //   primaryKey: true
-  // },
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true
+  },
   email: {
     type: Sequelize.STRING,
     allowNunll: false,

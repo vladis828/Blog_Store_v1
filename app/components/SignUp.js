@@ -15,7 +15,7 @@ function SignUp() {
 
     const token = res.data.token;
     const userId = res.data.user.id
-    console.log(res.data)
+    // console.log(res.data)
     localStorage.setItem('token', token)
     localStorage.setItem('userId', userId)
     setIsToken(token)

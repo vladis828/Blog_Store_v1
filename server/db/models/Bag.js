@@ -3,7 +3,7 @@ const db = require('../database');
 
 const Bag = db.define('bags', {
   userId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.UUID,
   },
   productId: {
     type: Sequelize.INTEGER
