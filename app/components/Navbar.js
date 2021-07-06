@@ -8,6 +8,7 @@ function Navbar() {
   function logOut() {
     localStorage.clear();
     setToken(null);
+    window.location.reload()
   }
 
 

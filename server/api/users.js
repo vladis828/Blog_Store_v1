@@ -77,7 +77,7 @@ router.post('/auth', async (req, res) => {
   const { email, password } = req.body;
   //Simple validation
   if (!email || !password) {
-    return res.status(400).send('Please enter all fields')
+    return res.send('Please enter all fields').status(400)
   }
 
   //Check for existing user
@@ -87,12 +87,12 @@ router.post('/auth', async (req, res) => {
   })
 
   if (!user) {
-    res.status(400).send('The user does not exist')
+    res.send('The user does not exist').status(400)
   } else {
     //Validate password
     bcrypt.compare(password, user.password)
       .then(isMatch => {
-        if (!isMatch) return res.status(400).send('Invalid credentials')
+        if (!isMatch) return res.send('Invalid credentials').status(400)
 
         jwt.sign(
           { id: user.id },

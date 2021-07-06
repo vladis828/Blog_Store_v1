@@ -13,11 +13,18 @@ function Login() {
     event.preventDefault();
     const res = await axios.post('/api/users/auth', { email, password })
 
-    const token = res.data.token;
-    const userId = res.data.user.id
-    localStorage.setItem('token', token);
-    localStorage.setItem('userId', userId);
-    setIsToken(token);
+    if (res.data === 'The user does not exist') {
+      alert('The user does not exist')
+    } else if (res.data === 'Invalid credentials') {
+      alert('Invalid credentials')
+    } else {
+      console.log("ELSE", res.data)
+      const token = res.data.token;
+      const userId = res.data.user.id
+      localStorage.setItem('token', token);
+      localStorage.setItem('userId', userId);
+      setIsToken(token);
+    }
   }
 
   return (
