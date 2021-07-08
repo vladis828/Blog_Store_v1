@@ -26,12 +26,15 @@ NAVBAR BUTTONS
 
 */
 
+/*HIDEN MENU BUTTON*/
+
 span {
   position: relative;
   z-index: 3;
 }
 
-.navbar a {
+.navbar a,
+.navbar button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -48,7 +51,8 @@ span {
   display: inline-block;
 }
 
-.navbar a::before {
+.navbar a::before,
+.navbar button::before {
   content: "";
   position: absolute;
   top: 5px;
@@ -60,11 +64,13 @@ span {
   transform: scaleY(1);
 }
 
-.navbar a:hover::before {
+.navbar a:hover::before,
+.navbar button:hover::before {
   transform: scaleY(0);
 }
 
-.navbar a::after {
+.navbar a::after,
+.navbar button::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -76,7 +82,8 @@ span {
   transform: scaleX(1);
 }
 
-.navbar a:hover::after {
+.navbar a:hover::after,
+.navbar button:hover::after {
   transform: scaleX(0);
 }
 
@@ -97,10 +104,6 @@ NAVBAR
 
 .navbar {
   display: flex;
-  /* background-color: coral; */
-  /* flex-direction: row;
-  justify-content: space-around;
-  align-items: center; */
   height: 60px;
 }
 
@@ -141,10 +144,6 @@ RIGHT SIDE OF NAVBAR
 */
 
 .navbar .rightSide {
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center; */
-  /* background-color: cornflowerblue; */
   flex: 50%;
 }
 
@@ -176,22 +175,25 @@ RIGHT SIDE OF NAVBAR
   display: none;
 }
 
+/*
+
+RESPONSIVE NAVBAR
+
+*/
+
 @media screen and (max-width: 850px) {
   .navbar {
     height: 40px;
   }
-  .navbar a {
+  .navbar a,
+  .navbar button {
     font-size: 10px;
     padding: 5px 10px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  /*
-
-  LEFT SIDE
-
-  */
+  /*LEFT SIDE*/
 
   .navbar .leftSide button {
     display: flex;
@@ -219,11 +221,7 @@ RIGHT SIDE OF NAVBAR
     background-color: white;
   }
 
-  /*
-
-  RIGHT SIDE
-
-  */
+  /*RIGHT SIDE*/
 
   .navbar .rightSide button {
     display: flex;

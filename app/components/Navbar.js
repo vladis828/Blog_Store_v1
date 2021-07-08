@@ -27,7 +27,7 @@ function Navbar() {
               setShowRight(false)
             }
             setShowLeft(!showLeft)
-          }}>Open</button>
+          }}><span>☰</span></button>
 
           <div className='links' id={showLeft ? 'left' : ''}>
             <Link to='/'>
@@ -48,7 +48,7 @@ function Navbar() {
                 setShowLeft(false)
               }
               setShowRight(!showRight)
-            }}>Open</button>
+            }}><span>☰</span></button>
             <div className='links' id={showRight ? 'right' : ''}>
               <Link to='/account'>
                 <span>Account</span>
