@@ -5,19 +5,12 @@ import logo from '../../public/logo.jpg';
 function Navbar() {
   // console.log("NAVBAR")
   const [token, setToken] = useState(localStorage.getItem('token'))
+  const [showLeft, setShowLeft] = useState(false)
+  const [showRight, setShowRight] = useState(false)
 
   function logOut() {
     localStorage.clear();
     setToken(null);
-  }
-
-  function myFunction() {
-    var x = document.getElementById("myNavbar");
-    if (x.className === "navbar") {
-      x.className += " responsive";
-    } else {
-      x.className = "navbar";
-    }
   }
 
   return (
@@ -26,38 +19,58 @@ function Navbar() {
         <img src={logo} alt='LOGO' id='logoImage' />
       </div >
 
+      <div className='navbar'>
+        <div className='leftSide' >
 
-      <div className='navbar' id='myNavbar'>
-        <Link to='/'>
-          <span>Home</span>
-        </Link>
-        <Link to='/about'>
-          <span>About Me</span>
-        </Link>
-        <Link to='/contacts'>
-          <span>Contacts</span>
-        </Link>
+          <button onClick={() => {
+            if (showRight) {
+              setShowRight(false)
+            }
+            setShowLeft(!showLeft)
+          }}>Open</button>
 
-        {token ?
-          <div id='userMenu'>
-            <Link to='/account'>
-              <span>Account</span>
+          <div className='links' id={showLeft ? 'left' : ''}>
+            <Link to='/'>
+              <span>Home</span>
             </Link>
-            <Link to='/cart'>
-              <span>Cart</span>
+            <Link to='/about'>
+              <span>About</span>
             </Link>
-            <Link to='/' onClick={logOut}>
-              <span>Log out</span>
+            <Link to='/contacts'>
+              <span>Contacts</span>
             </Link>
           </div>
-          : <Link to='/login'>
-            <span>Log in</span>
-          </Link>}
-        <a href={"javascript:void(0);"} className="icon" onClick={myFunction}>
-          <i className="fa fa-bars"></i>
-        </a>
-      </div>
+        </div>
+        {token ?
+          <div className='rightSide'>
+            <button onClick={() => {
+              if (showLeft) {
+                setShowLeft(false)
+              }
+              setShowRight(!showRight)
+            }}>Open</button>
+            <div className='links' id={showRight ? 'right' : ''}>
+              <Link to='/account'>
+                <span>Account</span>
+              </Link>
+              <Link to='/cart'>
+                <span>Cart</span>
+              </Link>
+              <Link to='/' onClick={logOut}>
+                <span>Log out</span>
+              </Link>
+            </div>
 
+
+          </div>
+          :
+          <div className='login'>
+            <Link to='/login'>
+              <span>Log in</span>
+            </Link>
+          </div>}
+
+      </div>
     </div >
   )
 }
