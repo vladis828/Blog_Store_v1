@@ -60,8 +60,6 @@ function Navbar() {
                 <span>Log out</span>
               </Link>
             </div>
-
-
           </div>
           :
           <div className='login'>

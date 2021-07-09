@@ -10,7 +10,11 @@ function Home() {
   const [type, setType] = useState(null);
 
   function buttonHadler(event) {
-    setType(event.target.innerText)
+    if (event.target.localName === 'button') {
+      setType(event.target.firstChild.innerHTML)
+    } else {
+      setType(event.target.innerHTML)
+    }
   }
 
   useEffect(() => {
@@ -22,10 +26,10 @@ function Home() {
     <div>
       <Navbar setType={setType} />
       <div id='dishFilter'>
-        <button onClick={() => setType(null)}>All dishes</button>
-        <button onClick={buttonHadler}>Breakfast</button>
-        <button onClick={buttonHadler}>Main</button>
-        <button onClick={buttonHadler}>Dessert</button>
+        <button onClick={() => setType(null)}><span>All dishes</span></button>
+        <button onClick={buttonHadler}><span>Breakfast</span></button>
+        <button onClick={buttonHadler}><span>Main</span></button>
+        <button onClick={buttonHadler}><span>Dessert</span></button>
       </div>
       <div>
         {prods.map(
@@ -39,7 +43,7 @@ function Home() {
           }
         )}
       </div>
-    </div>
+    </div >
   )
 }
 

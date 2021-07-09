@@ -26,15 +26,15 @@ NAVBAR BUTTONS
 
 */
 
-/*HIDEN MENU BUTTON*/
-
-span {
+.navbar span,
+#dishFilter button span {
   position: relative;
   z-index: 3;
 }
 
 .navbar a,
-.navbar button {
+.navbar button,
+#dishFilter button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -51,8 +51,15 @@ span {
   display: inline-block;
 }
 
+#dishFilter button {
+  background-color: grey;
+  border: 2px solid white;
+  color: white;
+}
+
 .navbar a::before,
-.navbar button::before {
+.navbar button::before,
+#dishFilter button::before {
   content: "";
   position: absolute;
   top: 5px;
@@ -64,13 +71,19 @@ span {
   transform: scaleY(1);
 }
 
+#dishFilter button::before {
+  background-color: grey;
+}
+
 .navbar a:hover::before,
-.navbar button:hover::before {
+.navbar button:hover::before,
+#dishFilter button:hover::before {
   transform: scaleY(0);
 }
 
 .navbar a::after,
-.navbar button::after {
+.navbar button::after,
+#dishFilter button::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -82,8 +95,13 @@ span {
   transform: scaleX(1);
 }
 
+#dishFilter button::after {
+  background-color: grey;
+}
+
 .navbar a:hover::after,
-.navbar button:hover::after {
+.navbar button:hover::after,
+#dishFilter button:hover::after {
   transform: scaleX(0);
 }
 
@@ -176,17 +194,57 @@ RIGHT SIDE OF NAVBAR
 }
 
 /*
+#content {
+  border: 5px solid grey;
+  border-radius: 20px;
+  margin: 1%;
+}
 
-RESPONSIVE NAVBAR
+#content * {
+  align-items: center;
+  justify-content: center;
+}
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 200px;
+  width: 20%;
+}
+*/
+
+/*
+
+DISH FILTER
+
+*/
+
+#dishFilter {
+  height: 60px;
+  background: linear-gradient(to right, white, grey 5%, grey 95%, white);
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* margin-top: 15px; */
+}
+
+/*
+
+RESPONSIVE NAVBAR and DISH FILTER
 
 */
 
 @media screen and (max-width: 850px) {
-  .navbar {
+  .navbar,
+  #dishFilter {
     height: 40px;
   }
   .navbar a,
-  .navbar button {
+  .navbar button,
+  #dishFilter button {
     font-size: 10px;
     padding: 5px 10px;
   }
@@ -219,6 +277,7 @@ RESPONSIVE NAVBAR
     height: 40px;
     width: 100%;
     background-color: white;
+    z-index: 1;
   }
 
   /*RIGHT SIDE*/
@@ -247,41 +306,6 @@ RESPONSIVE NAVBAR
     height: 40px;
     width: 100%;
     background-color: white;
+    z-index: 1;
   }
 }
-
-/* #userMenu > a {
-  margin: 5px;
-} */
-
-/*
-#content {
-  border: 5px solid grey;
-  border-radius: 20px;
-  margin: 1%;
-}
-
-#content * {
-  align-items: center;
-  justify-content: center;
-}
-
-.each-slide > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 20%;
-}
-
-#dishFilter {
-  display: flex;
-  justify-content: stretch;
-  margin-top: 15px;
-}
-
-#dishFilter * {
-  margin: auto;
-  height: 3em;
-} */
