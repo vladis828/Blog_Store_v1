@@ -5,7 +5,7 @@ import 'react-slideshow-image/dist/styles.css';
 function Slideshow(props) {
   return (
     <div>
-      <Fade easing="ease">
+      <Fade easing="ease" >
         {props.pics.map(pic =>
           <div className="each-slide" key={pic.id}>
             <div style={{ 'backgroundImage': `url(${pic.url})` }}>

@@ -22,6 +22,13 @@ function Home() {
       .then(res => setProds(res.data))
   }, [])
 
+  function topFunction() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
   return (
     <div>
       <Navbar setType={setType} />
@@ -31,7 +38,7 @@ function Home() {
         <button onClick={buttonHadler}><span>Main</span></button>
         <button onClick={buttonHadler}><span>Dessert</span></button>
       </div>
-      <div>
+      <div id='allProducts'>
         {prods.map(
           prod => {
             if (!type) {
@@ -42,6 +49,10 @@ function Home() {
             }
           }
         )}
+        <div id='top'>
+          <button onClick={() => topFunction()}><span>TOP</span></button>
+        </div>
+
       </div>
     </div >
   )
