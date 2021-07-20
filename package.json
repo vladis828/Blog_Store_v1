@@ -22,7 +22,8 @@
     "react-router-dom": "^5.2.0",
     "react-slideshow-image": "^3.4.7",
     "sequelize": "^6.6.2",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "volleyball": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -34,7 +35,6 @@
     "file-loader": "^6.2.0",
     "image-webpack-loader": "^7.0.1",
     "style-loader": "^2.0.0",
-    "volleyball": "^1.5.1",
     "webpack": "^5.39.0",
     "webpack-cli": "^4.7.2"
   }
