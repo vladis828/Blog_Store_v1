@@ -5,7 +5,9 @@ function Contacts() {
   return (
     <div>
       <Navbar />
-      <h1>Contacts</h1>
+      <div id='contacts'>
+        <h3>Contacts</h3>
+      </div>
     </div>
 
   )

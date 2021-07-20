@@ -356,7 +356,10 @@ DISH WINDOW
 .extendMenu,
 .bag,
 #total,
-.history {
+.history,
+#about,
+#contacts,
+#account {
   font-family: "Courier New", Courier, monospace;
   font-size: 15px;
   color: #696969;
@@ -368,7 +371,10 @@ DISH WINDOW
 }
 
 #allProducts,
-#cart {
+#cart,
+#about,
+#contacts,
+#account {
   display: flex;
   flex-direction: column;
   width: 70vw;

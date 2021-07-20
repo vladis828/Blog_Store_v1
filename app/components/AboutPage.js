@@ -5,7 +5,9 @@ function AboutPage() {
   return (
     <div>
       <Navbar />
-      <h1>About Page</h1>
+      <div id='about'>
+        <h3>About page</h3>
+      </div>
     </div>
 
   )

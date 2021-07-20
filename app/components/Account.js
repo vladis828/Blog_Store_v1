@@ -24,9 +24,11 @@ function Account() {
     <div>
       {token ? <div>
         <Navbar />
-        <div id='content'>
-          <p>User ID: {user.id}</p>
-          <p>User E-mail: {user.email}</p>
+        <div id='account'>
+          <h3>User ID:</h3>
+          {user.id}
+          <h3>User E-mail:</h3>
+          {user.email}
         </div>
       </div>
         :
