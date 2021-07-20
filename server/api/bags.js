@@ -3,15 +3,15 @@ const { Bag, Product } = require('../db/models');
 const auth = require('../../middleware/auth')
 
 //Find All Bags
-router.get('/', (req, res) =>
-  Bag.findAll({
-    include: [Product]
-  })
-    .then(bags => {
-      res.json(bags)
-    })
-    .catch(err => console.log("Error:" + err))
-);
+// router.get('/', auth, (req, res) =>
+//   Bag.findAll({
+//     include: [Product]
+//   })
+//     .then(bags => {
+//       res.json(bags)
+//     })
+//     .catch(err => console.log("Error:" + err))
+// );
 
 
 //Increment quantity
@@ -60,7 +60,7 @@ router.put('/minus', async (req, res) => {
 )
 
 //Add Products to Bag
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const { userId, productId, productName, productPrice, quantity } = req.body
 
   const bag = await Bag.findOne({

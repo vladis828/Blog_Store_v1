@@ -5,20 +5,25 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 
 
-router.get('/', (req, res) => {
-  User.findAll({
-    include: [Bag],
-    attributes: {
-      exclude: ["password"]
-    }
-  })
-    .then(users => {
-      res.json(users)
-    })
-    .catch(err => console.log("Error:" + err))
-})
+// router.get('/', (req, res) => {
+//   User.findAll({
+//     include: [Bag],
+//     attributes: {
+//       exclude: ["password"]
+//     }
+//   })
+//     .then(users => {
+//       res.json(users)
+//     })
+//     .catch(err => console.log("Error:" + err))
+// })
 
-//Registration
+/*
+
+Registration
+
+*/
+
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
@@ -72,7 +77,12 @@ router.post('/signup', async (req, res) => {
   }
 })
 
-//Auth
+/*
+
+Auth
+
+*/
+
 router.post('/auth', async (req, res) => {
   const { email, password } = req.body;
   //Simple validation

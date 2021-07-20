@@ -6,7 +6,7 @@ router.use('/products', require('./products'))
 
 router.use('/bags', require('./bags'))
 
-router.use('/pics', require('./pics'))
+// router.use('/pics', require('./pics'))
 
 router.use('/users', require('./users'))
 
