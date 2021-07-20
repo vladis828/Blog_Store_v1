@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
+import swal from 'sweetalert';
+
 
 function Login() {
   // console.log("LOGIN")
@@ -14,11 +16,20 @@ function Login() {
     const res = await axios.post('/api/users/auth', { email, password })
 
     if (res.data === 'The user does not exist') {
-      alert('The user does not exist')
+      swal({
+        title: 'The user does not exist',
+        icon: 'error'
+      })
     } else if (res.data === 'Invalid credentials') {
-      alert('Invalid credentials')
+      swal({
+        title: 'Invalid credentials',
+        icon: 'error'
+      })
     } else if (res.data === 'Please enter all fields') {
-      alert('Please enter all fields')
+      swal({
+        title: 'Please enter all fields',
+        icon: 'error'
+      })
     } else {
       const token = res.data.token;
       const userId = res.data.user.id

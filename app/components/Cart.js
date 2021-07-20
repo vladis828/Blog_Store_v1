@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 
 function Cart() {
   // console.log("CART")
@@ -57,7 +59,11 @@ function Cart() {
         }))
       })
 
-    alert('Order was successfully placed!')
+    swal({
+      title: "Good job!",
+      text: "Your order was successfully placed!",
+      icon: "success",
+    })
   }
 
   return (
@@ -72,8 +78,8 @@ function Cart() {
                 if (!bag.paid) {
                   return (
                     <div className='bag' key={bag.id}>
-                      <p>Name: {bag.productName}</p>
-                      <p>Price: {bag.productPrice}</p>
+                      <h3>Name: {bag.productName}</h3>
+                      <p>Price: {bag.productPrice}$</p>
                       <p>Quantity: {bag.quantity}</p>
                       <div className='bagButtons'>
                         <button onClick={() => quantity(bag.id, 'plus')}><span>+</span></button>
@@ -88,14 +94,16 @@ function Cart() {
               )
                 : <p>Your cart is empty</p>}
             </div>
-            {bags.some(bag => !bag.paid) ?
-              <div id='total'>
-                <h3>Total:</h3> {bags.filter(bag => !bag.paid).reduce((acc, curVal) => {
-                  return (acc + curVal.productPrice * curVal.quantity)
-                }, 0)}$
-                <button onClick={() => placeOrder(bags.map(bag => bag.id))}><span>Place order</span></button>
-              </div>
-              : null}
+            {
+              bags.some(bag => !bag.paid) ?
+                <div id='total'>
+                  <h3>Total:</h3> {bags.filter(bag => !bag.paid).reduce((acc, curVal) => {
+                    return (acc + curVal.productPrice * curVal.quantity)
+                  }, 0)}$
+                  <button onClick={() => placeOrder(bags.map(bag => bag.id))}><span>Place order</span></button>
+                </div>
+                : null
+            }
             <div className='history'>
               <h3>Your purchase history</h3>
               {bags.some(bag => bag.paid) ?

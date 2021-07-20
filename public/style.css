@@ -24,6 +24,10 @@ BUTTONS
 
 */
 
+.swal-button {
+  background-color: grey;
+}
+
 .extendMenu button {
   margin-bottom: 10px;
 }
@@ -244,7 +248,9 @@ DISH FILTER
 
 #dishFilter button,
 .contentText button,
-#top button {
+#top button,
+#total button,
+.bagButtons button {
   cursor: pointer;
 }
 

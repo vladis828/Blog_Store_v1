@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Slideshow from './Slideshow';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 function Dish(props) {
   const [isVisible, setVisible] = useState(false)
@@ -31,11 +32,20 @@ function Dish(props) {
       productName: props.prod.name,
       productPrice: props.prod.price,
       quantity: `${document.getElementById(`quantity${props.prod.id}`).value}`
-    }
+    };
+
+    swal({
+      title: "The item was added!",
+      buttons: false,
+      timer: 1500,
+      icon: 'success',
+    });
 
     await axios.post('/api/bags', body,
       { headers: { Authorization: localStorage.getItem('token') } }
-    )
+    );
+
+
   }
 
   return (
