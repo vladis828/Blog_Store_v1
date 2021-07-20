@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
+import swal from 'sweetalert';
 
 function SignUp() {
   // console.log("SIGNUP")
@@ -14,9 +15,15 @@ function SignUp() {
     const res = await axios.post('/api/users/signup', { email, password })
 
     if (res.data === 'The user with this email already exists') {
-      alert('The user with this email already exists')
+      swal({
+        title: 'The user already exists',
+        icon: 'error'
+      })
     } else if (res.data === 'Please enter all fields') {
-      alert('Please enter all fields')
+      swal({
+        title: 'Please enter all fields',
+        icon: 'error'
+      })
     } else {
       const token = res.data.token;
       const userId = res.data.user.id
@@ -33,7 +40,7 @@ function SignUp() {
         :
         <div>
           <Navbar />
-          <div id='content'>
+          <div id='login'>
             <form onSubmit={handleSubmit}>
               <div>
                 <label>
@@ -48,7 +55,7 @@ function SignUp() {
                 <input name="password" type="password" />
               </div>
               <div><br />
-                <button type="submit">Sign Up</button>
+                <button type="submit"><span>Sign Up</span></button>
               </div>
             </form>
           </div>

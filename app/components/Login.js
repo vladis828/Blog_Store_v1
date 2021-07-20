@@ -46,7 +46,7 @@ function Login() {
         :
         <div>
           <Navbar />
-          <div id='content'>
+          <div id='login'>
             <form onSubmit={handleSubmit}>
               <div>
                 <label>
@@ -60,10 +60,10 @@ function Login() {
                 </label>
                 <input name="password" type="password" />
               </div>
-              <div><br />
-                <button type="submit">Login</button>
-                <p>No account yet?  <Link to='/signup'>Sign Up! </Link></p>
-              </div>
+              <br />
+              <button type="submit"><span>Log in</span></button>
+              <p>No account yet?  <Link to='/signup'>SING UP! </Link></p>
+
             </form>
           </div>
         </div >

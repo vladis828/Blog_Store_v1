@@ -37,7 +37,8 @@ BUTTONS
 .contentText button span,
 #allProducts button span,
 .bagButtons button span,
-#total button span {
+#total button span,
+#login button span {
   position: relative;
   z-index: 3;
 }
@@ -48,7 +49,8 @@ BUTTONS
 .contentText button,
 #allProducts #top button,
 .bagButtons button,
-#total button {
+#total button,
+#login button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -77,7 +79,8 @@ BUTTONS
 .contentText button::before,
 #allProducts #top button::before,
 .bagButtons button::before,
-#total button::before {
+#total button::before,
+#login button::before {
   content: "";
   position: absolute;
   top: 5px;
@@ -99,7 +102,8 @@ BUTTONS
 .contentText button:hover::before,
 #allProducts #top button:hover::before,
 .bagButtons button:hover:before,
-#total button:hover::before {
+#total button:hover::before,
+#login button:hover::before {
   transform: scaleY(0);
 }
 
@@ -109,7 +113,8 @@ BUTTONS
 .contentText button::after,
 #allProducts #top button:after,
 .bagButtons button::after,
-#total button::after {
+#total button::after,
+#login button::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -131,7 +136,8 @@ BUTTONS
 .contentText button:hover::after,
 #allProducts #top button:hover::after,
 .bagButtons button:hover::after,
-#total button:hover::after {
+#total button:hover::after,
+#login button:hover::after {
   transform: scaleX(0);
 }
 
@@ -250,7 +256,9 @@ DISH FILTER
 .contentText button,
 #top button,
 #total button,
-.bagButtons button {
+.bagButtons button,
+.navbar .leftSide button,
+.navbar .rightSide button {
   cursor: pointer;
 }
 
@@ -274,7 +282,8 @@ RESPONSIVE NAVBAR and DISH FILTER
   #dishFilter button,
   .contentText button,
   #allProducts #top button,
-  #total button {
+  #total button,
+  #login button {
     font-size: 10px;
     padding: 5px 10px;
   }
@@ -365,7 +374,8 @@ DISH WINDOW
 .history,
 #about,
 #contacts,
-#account {
+#account,
+#login form {
   font-family: "Courier New", Courier, monospace;
   font-size: 15px;
   color: #696969;
@@ -380,11 +390,16 @@ DISH WINDOW
 #cart,
 #about,
 #contacts,
-#account {
+#account,
+#login {
   display: flex;
   flex-direction: column;
   width: 70vw;
   margin: auto;
+}
+
+#login {
+  align-items: center;
 }
 
 .extendMenu input {
