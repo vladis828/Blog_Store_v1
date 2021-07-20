@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css';
 
 function Slideshow(props) {
   return (
-    <div>
+    <div className='slide'>
       <Fade easing="ease" >
         {props.pics.map(pic =>
           <div className="each-slide" key={pic.id}>

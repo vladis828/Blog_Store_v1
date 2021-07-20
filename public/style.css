@@ -10,13 +10,11 @@ body {
 }
 
 #app {
-  /* background-color: yellowgreen; */
   width: 100vw;
   height: 100vh;
 }
 
 #logo {
-  /* background-color: yellow; */
   height: 250px;
 }
 
@@ -33,7 +31,9 @@ BUTTONS
 .navbar span,
 #dishFilter button span,
 .contentText button span,
-#allProducts button span {
+#allProducts button span,
+.bagButtons button span,
+#total button span {
   position: relative;
   z-index: 3;
 }
@@ -42,7 +42,9 @@ BUTTONS
 .navbar button,
 #dishFilter button,
 .contentText button,
-#allProducts #top button {
+#allProducts #top button,
+.bagButtons button,
+#total button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -69,7 +71,9 @@ BUTTONS
 .navbar button::before,
 #dishFilter button::before,
 .contentText button::before,
-#allProducts #top button::before {
+#allProducts #top button::before,
+.bagButtons button::before,
+#total button::before {
   content: "";
   position: absolute;
   top: 5px;
@@ -89,7 +93,9 @@ BUTTONS
 .navbar button:hover::before,
 #dishFilter button:hover::before,
 .contentText button:hover::before,
-#allProducts #top button:hover::before {
+#allProducts #top button:hover::before,
+.bagButtons button:hover:before,
+#total button:hover::before {
   transform: scaleY(0);
 }
 
@@ -97,7 +103,9 @@ BUTTONS
 .navbar button::after,
 #dishFilter button::after,
 .contentText button::after,
-#allProducts #top button:after {
+#allProducts #top button:after,
+.bagButtons button::after,
+#total button::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -117,7 +125,9 @@ BUTTONS
 .navbar button:hover::after,
 #dishFilter button:hover::after,
 .contentText button:hover::after,
-#allProducts #top button:hover::after {
+#allProducts #top button:hover::after,
+.bagButtons button:hover::after,
+#total button:hover::after {
   transform: scaleX(0);
 }
 
@@ -130,6 +140,11 @@ BUTTONS
   justify-content: center;
 }
 
+.bagButtons button {
+  margin: 2px;
+  font-size: 10px;
+  padding: 5px 10px;
+}
 /*
 
 NAVBAR
@@ -156,7 +171,6 @@ LEFT SIDE OF NAVBAR
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* background-color: darkkhaki; */
   flex: 50%;
 }
 
@@ -206,7 +220,6 @@ RIGHT SIDE OF NAVBAR
   justify-content: flex-end;
   padding-right: 4%;
   align-items: center;
-  /* background-color: cornflowerblue; */
   flex: 50%;
 }
 
@@ -227,10 +240,11 @@ DISH FILTER
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* margin-top: 15px; */
 }
 
-#dishFilter button {
+#dishFilter button,
+.contentText button,
+#top button {
   cursor: pointer;
 }
 
@@ -241,6 +255,10 @@ RESPONSIVE NAVBAR and DISH FILTER
 */
 
 @media screen and (max-width: 850px) {
+  #logo {
+    height: 200px;
+  }
+
   .navbar,
   #dishFilter {
     height: 40px;
@@ -249,13 +267,18 @@ RESPONSIVE NAVBAR and DISH FILTER
   .navbar button,
   #dishFilter button,
   .contentText button,
-  #allProducts #top button {
+  #allProducts #top button,
+  #total button {
     font-size: 10px;
     padding: 5px 10px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  #logo {
+    height: 100px;
+  }
+
   /*LEFT SIDE*/
 
   .navbar .leftSide button {
@@ -278,7 +301,7 @@ RESPONSIVE NAVBAR and DISH FILTER
     position: absolute;
     flex: 50%;
     left: 0px;
-    top: 290px;
+    top: 140px;
     height: 40px;
     width: 100%;
     background-color: white;
@@ -307,7 +330,7 @@ RESPONSIVE NAVBAR and DISH FILTER
     position: absolute;
     flex: 50%;
     left: 0px;
-    top: 290px;
+    top: 140px;
     height: 40px;
     width: 100%;
     background-color: white;
@@ -320,15 +343,20 @@ RESPONSIVE NAVBAR and DISH FILTER
 DISH WINDOW
 
 */
-#content {
+
+#content,
+#total {
   border-bottom: solid grey 1px;
-  width: 30vw;
+  width: 100%;
   margin: 10px auto;
   padding-bottom: 20px;
 }
 
 .contentText,
-.extendMenu {
+.extendMenu,
+.bag,
+#total,
+.history {
   font-family: "Courier New", Courier, monospace;
   font-size: 15px;
   color: #696969;
@@ -339,7 +367,8 @@ DISH WINDOW
   width: 100%;
 }
 
-#allProducts {
+#allProducts,
+#cart {
   display: flex;
   flex-direction: column;
   width: 70vw;
