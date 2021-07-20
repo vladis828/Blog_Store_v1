@@ -251,14 +251,19 @@ DISH FILTER
   justify-content: space-around;
   align-items: center;
 }
+/*
 
+CURSOR POINTER
+
+*/
 #dishFilter button,
 .contentText button,
 #top button,
 #total button,
 .bagButtons button,
 .navbar .leftSide button,
-.navbar .rightSide button {
+.navbar .rightSide button,
+#login button {
   cursor: pointer;
 }
 

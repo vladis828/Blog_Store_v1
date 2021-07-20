@@ -97,9 +97,9 @@ function Cart() {
             {
               bags.some(bag => !bag.paid) ?
                 <div id='total'>
-                  <h3>Total:</h3> {bags.filter(bag => !bag.paid).reduce((acc, curVal) => {
+                  <h3>Total: {bags.filter(bag => !bag.paid).reduce((acc, curVal) => {
                     return (acc + curVal.productPrice * curVal.quantity)
-                  }, 0)}$
+                  }, 0)}$</h3>
                   <button onClick={() => placeOrder(bags.map(bag => bag.id))}><span>Place order</span></button>
                 </div>
                 : null

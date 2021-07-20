@@ -35,7 +35,7 @@ function Dish(props) {
     };
 
     swal({
-      title: "The item was added!",
+      title: "The item was added to cart!",
       buttons: false,
       timer: 1500,
       icon: 'success',
@@ -54,6 +54,7 @@ function Dish(props) {
       <div className='contentText'>
         <h2>{props.prod.name}</h2>
         <p>{props.prod.type}</p>
+        <h3>About the dish:</h3>
         <p>{props.prod.description}</p>
 
         {isVisible ? (
@@ -66,6 +67,7 @@ function Dish(props) {
               <input id={`quantity` + props.prod.id} type="number" min={0} max={100} defaultValue={1} />
             </form> : null}
 
+            <h3>Recipe:</h3>
             <p>{props.prod.recipe}</p>
             {token ?
               <button onClick={addToCart}><span>Add to cart</span></button>
