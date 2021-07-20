@@ -407,7 +407,8 @@ DISH WINDOW
   align-items: center;
 }
 
-.extendMenu input {
+.extendMenu input,
+#login input {
   display: block;
   border: solid grey 1px;
   border-radius: 5px;
