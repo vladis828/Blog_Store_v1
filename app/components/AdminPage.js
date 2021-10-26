@@ -5,6 +5,7 @@ function AdminPage() {
       <>
         <h1>AdminPage</h1>
         <p>Paragraph</p>
+          <p>New Paragraph</p>
       </>
   )
 }
