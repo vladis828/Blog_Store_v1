@@ -4,7 +4,8 @@ function AdminPage() {
   return (
       <>
         <h1>AdminPage</h1>
-        <p>Paragraph</p>
+        <p>Paragraph n1</p>
+          <p>Paragraph n2</p>
       </>
   )
 }
